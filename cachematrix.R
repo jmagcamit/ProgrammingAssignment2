@@ -3,6 +3,7 @@
 
 ## Write a short comment describing this function
 
+##makes a cache of the matrix
 makeCacheMatrix <- function(x = matrix()) {
     inv <- NULL
     set <- function(y)
@@ -19,6 +20,7 @@ makeCacheMatrix <- function(x = matrix()) {
 
 ## Write a short comment describing this function
 
+##solves for the inverse of matrix
 cacheSolve <- function(x, ...) {
        inv <- x$getInv()
        if(!is.null(inv)) {
