@@ -3,18 +3,19 @@
 
 ## Write a short comment describing this function
 
-##makes a cache of the matrix
+##creates a cache of the matrix and initialize some functions
 makeCacheMatrix <- function(x = matrix()) {
-    inv <- NULL
+    z <- NULL ##z is inverse of matrix
     set <- function(y)
     {
       x <<- y
-      inv <<- NULL
+      z <<- NULL
     }
     get <- function() x
-    setInv = function(solve) inv <<- solve
-    getInv = function() inv
-    list(set=set, get=get, setInv=setInv, getInv=getInv)
+    setInvMatrix = function(solve) 
+    z <<- solve
+    getInvMatrix = function() z
+    list(set=set, get=get, setInvMatrix=setInvMatrix, getInvMatrix=getInvMatrix)
 }
 
 
@@ -22,13 +23,14 @@ makeCacheMatrix <- function(x = matrix()) {
 
 ##solves for the inverse of matrix
 cacheSolve <- function(x, ...) {
-       inv <- x$getInv()
-       if(!is.null(inv)) {
-         return(inv)
+       z <- x$getInvMatrix()
+       if(!is.null(z)) #return cached inverse of matrix if not null
+       {
+         z 
        }
        data <- x$get
-       inv <- solve(data)
-       x$setInv(inv)
-       inv
-   ## Return a matrix that is the inverse of 'x'
+       z <- solve(data, ...) #solve for inverse of matrix if null
+       x$setInvMatrix(z)
+       z
+## Return a matrix that is the inverse of 'x'
 }
